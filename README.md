@@ -11,7 +11,7 @@ Este proyecto es una aplicación móvil nativa para Android diseñada para la ge
 | **Rama de Desarrollo** | `development` |
 | **Autor Líder / Creador** | **Benjamin** - Desarrollo completo, arquitectura, lógica y testing. |
 
-## 🛠️ Requisitos Técnicos EV3
+## 🛠️ Requisitos Técnicos 
 
 La aplicación está configurada con las siguientes especificaciones:
 
