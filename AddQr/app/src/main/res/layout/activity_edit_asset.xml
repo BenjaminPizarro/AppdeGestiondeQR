@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".EditAssetActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Código QR (no se puede editar):" />
+
+    <TextView
+        android:id="@+id/tv_edit_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textStyle="bold"
+        tools:text="QR12345678" />
+
+    <EditText
+        android:id="@+id/edit_edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del Activo" />
+
+    <EditText
+        android:id="@+id/edit_edit_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción" />
+
+    <EditText
+        android:id="@+id/edit_edit_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Estado" />
+
+    <EditText
+        android:id="@+id/edit_edit_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ubicación" />
+
+    <Button
+        android:id="@+id/btn_update_asset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Actualizar Activo" />
+
+    <Button
+        android:id="@+id/btn_delete_asset"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Eliminar Activo" />
+
+</LinearLayout>
