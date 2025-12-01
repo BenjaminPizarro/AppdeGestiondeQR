@@ -64,7 +64,72 @@ Centraliza la gestión de datos.
 
   * **`LocationService`:** Clase de utilidad que abstrae la complejidad de la obtención de coordenadas GPS, utilizada por la `UpdateLocationActivity`.
   * **`QRUtils`:** Utilidad para inicializar el escáner QR (usando librerías externas como ZXing).
+Diagrama de Clases (UML) 
+Este diagrama representa las clases principales del sistema (Modelos, Persistencia y Servicios) y sus relaciones, siguiendo una arquitectura Modelo-Vista-Controlador (MVC).
 
+Fragmento de código
+
+classDiagram
+    direction LR
+    
+    class SQLiteOpenHelper {
+        + onCreate(db)
+        + onUpgrade(db)
+    }
+    class DbHelper {
+        <<Helper>>
+        + DB_NAME : String
+        + DB_VERSION : int
+        + onCreate(db)
+    }
+    
+    class AssetDAO {
+        <<Data Access Object>>
+        - dbHelper : DbHelper
+        + insertAsset(Asset): long
+        + getAssetById(int): Asset
+        + updateAsset(Asset): int
+        + addLocationRecord(Record): long
+        + getLocationHistory(int): List<Record>
+    }
+    
+    class Asset {
+        <<Model>>
+        + id: int
+        + qrCode: String
+        + name: String
+        + status: String
+        + lastLocation: String
+    }
+    
+    class LocationRecord {
+        <<Model>>
+        + id: int
+        + assetId: int (FK)
+        + latitude: double
+        + longitude: double
+        + timestamp: long
+    }
+    
+    class LocationService {
+        <<Service>>
+        + requestCurrentLocation(Callback)
+    }
+    
+    class AssetDetailActivity {
+        <<Activity / View>>
+        - assetDAO : AssetDAO
+        - locationService : LocationService
+        + onCreate()
+        + checkLocationPermissionsAndMove()
+    }
+    
+    SQLiteOpenHelper <|-- DbHelper : extiende
+    DbHelper <.. AssetDAO : usa
+    AssetDAO --> Asset : gestiona
+    AssetDAO --> LocationRecord : gestiona
+    AssetDetailActivity ..> AssetDAO : usa
+    AssetDetailActivity ..> LocationService : usa (Hardware GPS)
 ### Diagrama de Clases (Simplificado)
 
 ```mermaid
