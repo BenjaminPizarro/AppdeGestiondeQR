@@ -67,11 +67,12 @@ Centraliza la gestión de datos.
 Diagrama de Clases (UML) 
 Este diagrama representa las clases principales del sistema (Modelos, Persistencia y Servicios) y sus relaciones, siguiendo una arquitectura Modelo-Vista-Controlador (MVC).
 
-Fragmento de código
----
+
+
 classDiagram
     direction LR
     
+    ---
     class SQLiteOpenHelper {
         + onCreate(db)
         + onUpgrade(db)
