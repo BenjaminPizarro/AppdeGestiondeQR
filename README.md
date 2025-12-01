@@ -1,128 +1,156 @@
+Aquí tienes la documentación de Ingeniería y Arquitectura para tu proyecto **Asset Hunter PRO (AddQR)**, incluyendo el diseño, diagramas de clases, flujo y secuencia, presentada en un formato de documento técnico.
 
-# 📱 AddQR - Gestión de Inventario y Activos 
+-----
 
-Este proyecto es una aplicación móvil nativa para Android diseñada para la gestión de inventario y el seguimiento de activos utilizando códigos QR. Cumple con los requisitos EV3 (Entorno de Verificación 3) para una aplicación completa basada en Java y SQLite.
+# 📄 Documentación de Ingeniería y Arquitectura: Asset Hunter PRO (AddQR)
 
-## 👥 Repositorio y Autores
+## 1\. Diseño de la Aplicación (Visual y UX) 🎨
 
-| Elemento | Detalle |
-| :--- | :--- |
-| **Rama Principal** | `main` |
-| **Rama de Desarrollo** | `development` |
-| **Autor Líder / Creador** | **Benjamin** - Desarrollo completo, arquitectura, lógica y testing. |
+El diseño prioriza la **usabilidad en entornos de trabajo**, utilizando un esquema de color de alto contraste conocido como **Asset Hunter PRO (Modo Oscuro)**.
 
-## 🛠️ Requisitos Técnicos 
+| Aspecto | Detalle | Justificación |
+| :--- | :--- | :--- |
+| **Tema** | **Asset Hunter PRO (Modo Oscuro)** | Profesional, moderno y de alto contraste, ideal para entornos de trabajo (escanear códigos en almacenes, etc.). |
+| **Paleta** | **Fondo:** Azul Marino Oscuro (`#15202B`). **Primario (Acción):** Naranja Neón (`#FF8C00`). **Secundario (Informativo):** Azul Brillante (`#00A3FF`). **Contraste:** Blanco (`#FFFFFF`). | El **Naranja Neón** se usa exclusivamente para botones de acción crítica (**Escanear, Guardar/Mover GPS**) para asegurar la visibilidad y usabilidad. |
+| **Estructura**| Diseño Basado en **Tarjetas (CardView)** | Mejor legibilidad de la información de los activos en el detalle y formularios, separando visualmente los bloques de datos del fondo. |
+| **Navegación**| **Principal:** Menú lineal en `MainActivity`. **Pie de página:** Botones discretos para Acceso Rápido/Configuración (API). | Mantiene la sencillez del flujo principal (**Escanear -\> Detalle**) mientras ofrece acceso rápido a funciones secundarias. |
 
-La aplicación está configurada con las siguientes especificaciones:
+-----
 
-  * **Lenguaje:** Java
-  * **Base de Datos:** SQLite nativa de Android.
-  * **Actividades:** 10 Activities distintas para cubrir el flujo completo.
-  * **Funcionalidad Hardware (2):**
-      * *Cámara:* Escaneo de códigos QR para identificación y validación de activos.
-      * *GPS/Ubicación:* Registro de la ubicación geográfica al mover o actualizar un activo.
-      * *(Nota: El micrófono y el calendario no se usan en este alcance, se prioriza QR/GPS por la temática de inventario).*
-  * **API Externa (1):** Integración con una API de Mapas Estáticos (ej. Google Maps Static API) o Geocoding para visualizar la última ubicación registrada de un activo.
-  * **SDK Mínimo:** API 24 (Android 7.0 Nougat) o superior.
+## 2\. Diagrama de Clases (UML) 🧱
 
-## 🚀 Flujo de la Aplicación y 10 Activities
-
-El flujo se centra en el ciclo de vida de un activo, desde su registro hasta su seguimiento de ubicación.
-
-| \# | Activity | Descripción y Flujo | Hardware/API |
-| :--- | :--- | :--- | :--- |
-| **1** | `MainActivity` | Menú principal y acceso rápido a funciones clave. | N/A |
-| **2** | `ScanQRActivity` | Captura de Imagen/Cámara. Inicia el escáner QR para identificar un activo y redirige a *AssetDetailActivity*. | **CÁMARA** |
-| **3** | `NewAssetActivity` | Formulario para registrar un activo nuevo en la BD. Genera un QR único. | N/A |
-| **4** | `AssetListActivity` | Lista completa de todos los activos en el inventario. | N/A |
-| **5** | `AssetDetailActivity` | Muestra la información completa de un activo, su estado y su última ubicación. Contiene el botón para "Mover Activo". | GPS (disparado) |
-| **6** | `UpdateLocationActivity` | Funcionalidad de Hardware (GPS). Actividad dedicada a obtener la ubicación actual (Lat/Lon) y guardarla como un nuevo registro en la BD. | **GPS** |
-| **7** | `LocationHistoryActivity` | Muestra la lista cronológica de todos los movimientos de un activo específico. | N/A |
-| **8** | `EditAssetActivity` | Formulario para modificar los datos de un activo existente. | N/A |
-| **9** | `MapDisplayActivity` | Integración API. Muestra la última coordenada registrada del activo utilizando un servicio de mapas externo. | **API Externa** |
-| **10** | `SettingsActivity` | Permite configurar parámetros de la aplicación, como la clave de la API de Mapas. | N/A |
-
-## 🏗️ Ingeniería y Arquitectura
-
-La arquitectura sigue el patrón **Modelo-Vista-Controlador (MVC)**, separando claramente las responsabilidades.
-
-### 1\. Directorio `ui` (Views/Activities)
-
-Contiene las 10 Activities definidas arriba y los adaptadores necesarios para mostrar listas (ej. `AssetAdapter`).
-
-### 2\. Directorio `data` (Persistencia SQLite)
-
-Centraliza la gestión de datos.
-
-  * **Modelos (`Asset`, `LocationRecord`):** Objetos de datos.
-  * **`DbHelper`:** Hereda de `SQLiteOpenHelper`, responsable de crear (`onCreate`) y actualizar (`onUpgrade`) la estructura de las tablas (`Assets` y `LocationRecords`).
-  * **`AssetDAO` (Data Access Object):** Contiene los métodos CRUD (`insertAsset`, `getAssetById`, `addLocationRecord`, etc.) para interactuar con la BD de forma segura.
-
-### 3\. Directorio `service` (Hardware/API)
-
-  * **`LocationService`:** Clase de utilidad que abstrae la complejidad de la obtención de coordenadas GPS, utilizada por la `UpdateLocationActivity`.
-  * **`QRUtils`:** Utilidad para inicializar el escáner QR (usando librerías externas como ZXing).
-
-### Diagrama de Clases (Simplificado)
+Este diagrama representa las clases principales del sistema (**Modelos**, **Persistencia** y **Servicios**) y sus relaciones, siguiendo una arquitectura Modelo-Vista-Controlador (MVC).
 
 ```mermaid
 classDiagram
     direction LR
+    
     class SQLiteOpenHelper {
-        + onCreate()
-        + onUpgrade()
+        + onCreate(db)
+        + onUpgrade(db)
     }
-    class DbHelper
+    class DbHelper {
+        <<Helper>>
+        + DB_NAME : String
+        + DB_VERSION : int
+        + onCreate(db)
+    }
+    
     class AssetDAO {
+        <<Data Access Object>>
+        - dbHelper : DbHelper
         + insertAsset(Asset): long
         + getAssetById(int): Asset
+        + updateAsset(Asset): int
         + addLocationRecord(Record): long
+        + getLocationHistory(int): List<Record>
     }
+    
     class Asset {
+        <<Model>>
         + id: int
         + qrCode: String
         + name: String
+        + status: String
+        + lastLocation: String
     }
+    
     class LocationRecord {
-        + assetId: int
+        <<Model>>
+        + id: int
+        + assetId: int (FK)
         + latitude: double
         + longitude: double
+        + timestamp: long
     }
-
-    SQLiteOpenHelper <|-- DbHelper
-    DbHelper <.. AssetDAO
-    AssetDAO --> Asset
-    AssetDAO --> LocationRecord
     
-    UpdateLocationActivity ..> LocationService : usa
-    ScanQRActivity ..> QRUtils : usa
-    AssetDetailActivity ..> AssetDAO : accede
-    MapDisplayActivity ..> AssetDAO : accede
-```
-
-### Diagrama de Secuencia: Registro de Ubicación (Hardware GPS)
-
-```mermaid
-sequenceDiagram
-    participant UI as UpdateLocationActivity
-    participant LS as LocationService (GPS)
-    participant DAO as AssetDAO
-    participant DB as SQLite DB
-
-    UI->>UI: 1. checkLocationPermissions()
-    alt Permisos OK
-        UI->>LS: 2. requestCurrentLocation()
-        LS->>LS: 3. ObtenerCoordenadas(Lat, Lon)
-        LS-->>UI: 4. onLocationResult(Location)
-        UI->>UI: 5. Crear LocationRecord(AssetID, Lat, Lon)
-        UI->>DAO: 6. addLocationRecord(record)
-        DAO->>DB: 7. INSERT
-        DB-->>DAO: 8. OK
-        DAO-->>UI: 9. UbicacionGuardada()
-        UI->>UI: 10. Mostrar Notificación de Éxito
-    else Permisos Denegados
-        UI->>UI: 4. Mostrar Error de Permiso
-    end
+    class LocationService {
+        <<Service>>
+        + requestCurrentLocation(Callback)
+    }
+    
+    class AssetDetailActivity {
+        <<Activity / View>>
+        - assetDAO : AssetDAO
+        - locationService : LocationService
+        + onCreate()
+        + checkLocationPermissionsAndMove()
+    }
+    
+    SQLiteOpenHelper <|-- DbHelper : extiende
+    DbHelper <.. AssetDAO : usa
+    AssetDAO --> Asset : gestiona
+    AssetDAO --> LocationRecord : gestiona
+    AssetDetailActivity ..> AssetDAO : usa
+    AssetDetailActivity ..> LocationService : usa (Hardware GPS)
 ```
 
 -----
+
+## 3\. Diagrama de Flujo (Actividades) 🔄
+
+Este diagrama ilustra el flujo de navegación principal y las transiciones entre las Activities para la gestión de un activo.
+
+```mermaid
+graph TD
+    A[MainActivity (Menú Principal)] --> B(btn_scan_qr);
+    A --> C(btn_add_new_asset);
+    A --> D(btn_view_list);
+    
+    B --> E[ScanQRActivity (Cámara)];
+    E -- QR Code --> F{Activo Existe?};
+    
+    F -- Sí --> G[AssetDetailActivity (ID)];
+    F -- No --> H[NewAssetActivity (QR precargado)];
+    
+    C --> H;
+    H -- Guardar --> D;
+    
+    D --> I[AssetListActivity (Lista)];
+    I -- Seleccionar --> G;
+    
+    G -- btn_move_asset --> J[UpdateLocationActivity (Hardware GPS)];
+    G -- btn_view_on_map --> K[MapDisplayActivity (API Mapas)];
+    G -- btn_edit_asset --> L[EditAssetActivity];
+    
+    J -- Guardar GPS/Actualizar --> G;
+    L -- Guardar/Eliminar --> I;
+```
+
+-----
+
+## 4\. Diagrama de Secuencia (Funcionalidad de Hardware: GPS) 📍
+
+Este diagrama detalla la interacción paso a paso para el registro de una nueva ubicación mediante el hardware **GPS**, siendo un proceso asíncrono crucial para la funcionalidad de seguimiento.
+
+```mermaid
+sequenceDiagram
+    participant UI as AssetDetailActivity
+    participant OS as Android OS
+    participant LS as LocationService
+    participant DAO as AssetDAO
+    participant DB as SQLite DB
+
+    UI->>OS: 1. checkLocationPermissionsAndMove()
+    OS-->>UI: 2. Permisos Granted? (Sí/No)
+    
+    alt Permisos Aprobados
+        UI->>LS: 3. requestCurrentLocation(Callback)
+        LS->>OS: 4. Solicitar LocationManager.requestSingleUpdate()
+        OS-->>LS: 5. Location Found (Lat, Lon)
+        LS-->>UI: 6. onLocationResult(Location)
+        
+        UI->>UI: 7. Crear LocationRecord (con Lat/Lon)
+        UI->>DAO: 8. addLocationRecord(record)
+        DAO->>DB: 9. INSERT INTO location_records
+        DB-->>DAO: 10. OK
+        
+        UI->>DAO: 11. updateAsset(new Location string)
+        DAO->>DB: 12. UPDATE assets
+        DB-->>DAO: 13. OK
+        DAO-->>UI: 14. UpdateSuccess
+        UI->>UI: 15. Mostrar Toast de éxito
+    else Permisos Denegados
+        UI->>UI: 4. Mostrar Toast de Error
+    end
+```
