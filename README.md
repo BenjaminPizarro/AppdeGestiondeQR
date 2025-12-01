@@ -68,7 +68,7 @@ Diagrama de Clases (UML)
 Este diagrama representa las clases principales del sistema (Modelos, Persistencia y Servicios) y sus relaciones, siguiendo una arquitectura Modelo-Vista-Controlador (MVC).
 
 Fragmento de código
-
+---
 classDiagram
     direction LR
     
@@ -130,6 +130,7 @@ classDiagram
     AssetDAO --> LocationRecord : gestiona
     AssetDetailActivity ..> AssetDAO : usa
     AssetDetailActivity ..> LocationService : usa (Hardware GPS)
+    ---
 ### Diagrama de Clases (Simplificado)
 
 ```mermaid
