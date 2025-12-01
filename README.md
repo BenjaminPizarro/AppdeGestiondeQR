@@ -59,7 +59,8 @@ Centraliza la gestión de datos.
   * **Modelos (`Asset`, `LocationRecord`):** Objetos de datos.
   * **`DbHelper`:** Hereda de `SQLiteOpenHelper`, responsable de crear (`onCreate`) y actualizar (`onUpgrade`) la estructura de las tablas (`Assets` y `LocationRecords`).
   * **`AssetDAO` (Data Access Object):** Contiene los métodos CRUD (`insertAsset`, `getAssetById`, `addLocationRecord`, etc.) para interactuar con la BD de forma segura.
-
+### 🎨 Diseño de la Aplicación
+<img width="1342" height="784" alt="image" src="https://github.com/user-attachments/assets/7805876c-dcab-4b93-9988-a7824c3bafa2" />
 
     
 ### Diagrama de Clases (UML) 
