@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#15202B" tools:context=".SettingsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clave de API para Mapas"
+        android:textColor="#FFFFFF" android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_api_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pega tu clave de API aquí"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btn_save_settings"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:backgroundTint="#FF8C00"
+
+        android:elevation="12dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:text="Guardar Configuración"
+        android:textColor="#15202B"
+
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

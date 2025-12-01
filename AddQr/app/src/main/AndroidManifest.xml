@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Permisos de Hardware Requeridos (Cámara y GPS) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-feature android:name="android.hardware.location.gps" />
+    
+    <!-- Permisos para la API (si usas Google Maps o Geocoding) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AddQr">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="TU_CLAVE_DE_API_AQUI" />
+
+        <!-- Declaración de las 10 Actividades -->
+
+        <!-- 1/10: Pantalla Principal -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 2/10: Escaneo QR (Cámara) -->
+        <activity android:name=".ScanQRActivity" />
+
+        <!-- 3/10: Creación de Activo -->
+        <activity android:name=".NewAssetActivity" />
+        
+        <!-- 4/10: Lista de Activos -->
+        <activity android:name=".AssetListActivity" />
+        
+        <!-- 5/10: Detalle y Movimiento (GPS) -->
+        <activity android:name=".AssetDetailActivity" />
+        
+        <!-- 6/10: Historial de Ubicación -->
+        <activity android:name=".LocationHistoryActivity" />
+        
+        <!-- 7/10: Configuración (API) -->
+        <activity android:name=".SettingsActivity" />
+        
+        <!-- 8/10: Acerca de -->
+        <activity android:name=".AboutActivity" />
+        
+        <!-- 9/10: Visualización en Mapa (API) -->
+        <activity android:name=".MapDisplayActivity" />
+        
+        <!-- 10/10: Edición de Activo -->
+        <activity android:name=".EditAssetActivity" />
+
+    </application>
+</manifest>
