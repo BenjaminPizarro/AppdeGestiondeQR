@@ -74,11 +74,6 @@ Centraliza la gestión de datos.
 <img width="755" height="1218" alt="image" src="https://github.com/user-attachments/assets/34acf04f-75f9-4869-bb95-087924219f45" />
 
     
-### Diagrama de Clases (Simplificado)
-<img width="1772" height="1072" alt="image" src="https://github.com/user-attachments/assets/97da1000-fabf-45d3-bfb0-20790d958948" />
-
-
-
 
 
 ### Diagrama de Secuencia: Registro de Ubicación (Hardware GPS)
