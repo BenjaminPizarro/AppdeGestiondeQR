@@ -64,6 +64,7 @@ Centraliza la gestión de datos.
 
   * **`LocationService`:** Clase de utilidad que abstrae la complejidad de la obtención de coordenadas GPS, utilizada por la `UpdateLocationActivity`.
   * **`QRUtils`:** Utilidad para inicializar el escáner QR (usando librerías externas como ZXing).
+###🎨 Diseño de la Aplicación (Visual y UX)Tras una mejora visual completa, la aplicación adopta el tema AddQR, diseñado para ser moderno, profesional y de alto contraste, ideal para su uso en entornos de trabajo.Paleta de ColoresElementoColorCódigo HexPropósitoFondo PrincipalAzul Marino Oscuro#15202BBase del Modo Oscuro. Proporciona un entorno visual limpio y sin distracciones.Color de Acción (Primario)Naranja Neón#FF8C00Utilizado en los botones más críticos (Ej: "Escanear Activo", "Registrar GPS"). Genera el mayor contraste.Color InformativoAzul Brillante#00A3FFUsado para títulos, iconos de navegación y resaltar información clave no crítica (Ej: estado "Disponible").Fondo de Tarjetas / CamposGris Oscuro Azulado#1A2C39Da profundidad a los elementos interactivos y a las tarjetas de detalle, separándolos del fondo.Color de Texto BaseBlanco#FFFFFFGarantiza la máxima legibilidad sobre los fondos oscuros.
     
 ### Diagrama de Clases (UML) 
 <img width="2262" height="983" alt="image" src="https://github.com/user-attachments/assets/4cfd5241-4351-45a3-8cde-25783005dbed" />
