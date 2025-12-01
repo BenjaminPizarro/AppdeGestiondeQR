@@ -69,41 +69,11 @@ Centraliza la gestión de datos.
 ### Diagrama de Flujo (Actividades)
     
 ### Diagrama de Clases (Simplificado)
+<img width="1772" height="1072" alt="image" src="https://github.com/user-attachments/assets/97da1000-fabf-45d3-bfb0-20790d958948" />
 
-```mermaid
-classDiagram
-    direction LR
-    class SQLiteOpenHelper {
-        + onCreate()
-        + onUpgrade()
-    }
-    class DbHelper
-    class AssetDAO {
-        + insertAsset(Asset): long
-        + getAssetById(int): Asset
-        + addLocationRecord(Record): long
-    }
-    class Asset {
-        + id: int
-        + qrCode: String
-        + name: String
-    }
-    class LocationRecord {
-        + assetId: int
-        + latitude: double
-        + longitude: double
-    }
 
-    SQLiteOpenHelper <|-- DbHelper
-    DbHelper <.. AssetDAO
-    AssetDAO --> Asset
-    AssetDAO --> LocationRecord
-    
-    UpdateLocationActivity ..> LocationService : usa
-    ScanQRActivity ..> QRUtils : usa
-    AssetDetailActivity ..> AssetDAO : accede
-    MapDisplayActivity ..> AssetDAO : accede
-```
+
+
 
 ### Diagrama de Secuencia: Registro de Ubicación (Hardware GPS)
 <img width="1155" height="889" alt="image" src="https://github.com/user-attachments/assets/5ae6001f-55fd-4471-847f-269ebc59f1b9" />
