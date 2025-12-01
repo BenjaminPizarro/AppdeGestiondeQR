@@ -107,27 +107,7 @@ classDiagram
 
 ### Diagrama de Secuencia: Registro de Ubicación (Hardware GPS)
 
-```mermaid
-sequenceDiagram
-    participant UI as UpdateLocationActivity
-    participant LS as LocationService (GPS)
-    participant DAO as AssetDAO
-    participant DB as SQLite DB
+![Uploading image.png…]()
 
-    UI->>UI: 1. checkLocationPermissions()
-    alt Permisos OK
-        UI->>LS: 2. requestCurrentLocation()
-        LS->>LS: 3. ObtenerCoordenadas(Lat, Lon)
-        LS-->>UI: 4. onLocationResult(Location)
-        UI->>UI: 5. Crear LocationRecord(AssetID, Lat, Lon)
-        UI->>DAO: 6. addLocationRecord(record)
-        DAO->>DB: 7. INSERT
-        DB-->>DAO: 8. OK
-        DAO-->>UI: 9. UbicacionGuardada()
-        UI->>UI: 10. Mostrar Notificación de Éxito
-    else Permisos Denegados
-        UI->>UI: 4. Mostrar Error de Permiso
-    end
-```
 
 -----
