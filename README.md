@@ -1,6 +1,6 @@
 
 
-# 📱 AddQR - Gestión de Inventario y Activos 
+# AddQR - Gestión de Inventario y Activos 
 
 Este proyecto es una aplicación móvil nativa para Android diseñada para la gestión de inventario y el seguimiento de activos utilizando códigos QR. Cumple con los requisitos EV3 (Entorno de Verificación 3) para una aplicación completa basada en Java y SQLite.
 
@@ -27,7 +27,7 @@ La aplicación está configurada con las siguientes especificaciones:
   * **API Externa (1):** Integración con una API de Mapas Estáticos (ej. Google Maps Static API) o Geocoding para visualizar la última ubicación registrada de un activo.
   * **SDK Mínimo:** API 24 (Android 7.0 Nougat) o superior.
 
-## 🚀 Flujo de la Aplicación y 10 Activities
+## Flujo de la Aplicación y 10 Activities
 
 El flujo se centra en el ciclo de vida de un activo, desde su registro hasta su seguimiento de ubicación.
 
@@ -64,74 +64,10 @@ Centraliza la gestión de datos.
 
   * **`LocationService`:** Clase de utilidad que abstrae la complejidad de la obtención de coordenadas GPS, utilizada por la `UpdateLocationActivity`.
   * **`QRUtils`:** Utilidad para inicializar el escáner QR (usando librerías externas como ZXing).
-Diagrama de Clases (UML) 
-Este diagrama representa las clases principales del sistema (Modelos, Persistencia y Servicios) y sus relaciones, siguiendo una arquitectura Modelo-Vista-Controlador (MVC).
-
-
-
-classDiagram
-    direction LR
     
-    ---
-    class SQLiteOpenHelper {
-        + onCreate(db)
-        + onUpgrade(db)
-    }
-    class DbHelper {
-        <<Helper>>
-        + DB_NAME : String
-        + DB_VERSION : int
-        + onCreate(db)
-    }
+### Diagrama de Clases (UML) 
+### Diagrama de Flujo (Actividades)
     
-    class AssetDAO {
-        <<Data Access Object>>
-        - dbHelper : DbHelper
-        + insertAsset(Asset): long
-        + getAssetById(int): Asset
-        + updateAsset(Asset): int
-        + addLocationRecord(Record): long
-        + getLocationHistory(int): List<Record>
-    }
-    
-    class Asset {
-        <<Model>>
-        + id: int
-        + qrCode: String
-        + name: String
-        + status: String
-        + lastLocation: String
-    }
-    
-    class LocationRecord {
-        <<Model>>
-        + id: int
-        + assetId: int (FK)
-        + latitude: double
-        + longitude: double
-        + timestamp: long
-    }
-    
-    class LocationService {
-        <<Service>>
-        + requestCurrentLocation(Callback)
-    }
-    
-    class AssetDetailActivity {
-        <<Activity / View>>
-        - assetDAO : AssetDAO
-        - locationService : LocationService
-        + onCreate()
-        + checkLocationPermissionsAndMove()
-    }
-    
-    SQLiteOpenHelper <|-- DbHelper : extiende
-    DbHelper <.. AssetDAO : usa
-    AssetDAO --> Asset : gestiona
-    AssetDAO --> LocationRecord : gestiona
-    AssetDetailActivity ..> AssetDAO : usa
-    AssetDetailActivity ..> LocationService : usa (Hardware GPS)
-    ---
 ### Diagrama de Clases (Simplificado)
 
 ```mermaid
