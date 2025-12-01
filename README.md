@@ -10,7 +10,7 @@ Este proyecto es una aplicación móvil nativa para Android diseñada para la ge
 | :--- | :--- |
 | **Rama Principal** | `main` |
 | **Rama de Desarrollo** | `development` |
-| **Usuario/Equipo** | *$$Tu Nombre o Alias$$* |
+| **Usuario/Equipo** | *BenjaminAPP* |
 | **Autor Líder / Creador** | **Benjamin** - Desarrollo completo, arquitectura, lógica y testing. |
 
 ## 🛠️ Requisitos Técnicos 
