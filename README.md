@@ -66,7 +66,8 @@ Centraliza la gestión de datos.
   * **`QRUtils`:** Utilidad para inicializar el escáner QR (usando librerías externas como ZXing).
     
 ### Diagrama de Clases (UML) 
-![black-background-1468370534d5s](https://github.com/user-attachments/assets/fb30708b-4bbf-4547-8e94-33ae2909ee9b)
+<img width="2262" height="983" alt="image" src="https://github.com/user-attachments/assets/4cfd5241-4351-45a3-8cde-25783005dbed" />
+
 
 
 ### Diagrama de Flujo (Actividades)
