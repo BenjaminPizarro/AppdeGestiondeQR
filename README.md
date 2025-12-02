@@ -2,7 +2,7 @@
 
 # AddQR - Gestión de Inventario y Activos 
 
-Este proyecto es una aplicación móvil nativa para Android diseñada para la gestión de inventario y el seguimiento de activos utilizando códigos QR. Cumple con los requisitos EV3 (Entorno de Verificación 3) para una aplicación completa basada en Java y SQLite.
+Este proyecto es una aplicación móvil nativa para Android diseñada para la gestión de inventario y el seguimiento de activos utilizando códigos QR. Cumple  para una aplicación completa basada en Java y SQLite.
 
 ## 👥 Repositorio y Autores
 
