@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#15202B" tools:context=".EditAssetActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Código QR (no se puede editar):"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/tv_edit_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textStyle="bold"
+        android:textColor="#00A3FF" android:textSize="16sp"
+        tools:text="QR12345678" />
+
+    <EditText
+        android:id="@+id/edit_edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del Activo"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_edit_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_edit_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Estado"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_edit_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ubicación"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btn_update_asset"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="24dp"
+        android:text="Actualizar Activo"
+        android:textColor="#15202B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="#FF8C00"
+        android:elevation="12dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"/>
+
+    <Button
+        android:id="@+id/btn_delete_asset"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Eliminar Activo"
+        android:textColor="#FF6347" android:backgroundTint="@android:color/transparent"
+        android:elevation="0dp"
+        android:textSize="16sp"/>
+
+</LinearLayout>

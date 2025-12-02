@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#15202B" 
+    tools:context=".NewAssetActivity">
+
+    <EditText
+        android:id="@+id/edit_qr_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Código QR (UUID autogenerado)"
+        android:textColor="#FFFFFF" 
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="8dp"/>
+    
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del Activo"
+        android:inputType="textCapWords"
+        android:textColor="#FFFFFF" 
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Descripción"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        android:textColor="#FFFFFF" 
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/edit_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Estado (Ej: Disponible, En Uso)"
+        android:textColor="#FFFFFF" 
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="8dp"/>
+    
+    <EditText
+        android:id="@+id/edit_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ubicación (Ej: Oficina 301)"
+        android:textColor="#FFFFFF" 
+        android:textColorHint="#5A8FAD"
+        android:backgroundTint="#1A2C39"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/btn_save_asset"
+        android:layout_width="match_parent"
+        android:layout_height="65dp" 
+        android:text="Guardar Activo"
+        android:textColor="#15202B" 
+        android:textSize="18sp" 
+        android:textStyle="bold"
+        android:backgroundTint="#FF8C00" 
+        android:elevation="12dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"/>
+
+</LinearLayout>
